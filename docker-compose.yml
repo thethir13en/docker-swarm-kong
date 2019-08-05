@@ -113,6 +113,8 @@ services:
     environment:
       - ZBX_SERVER_HOST=${ZBX_SERVER_HOST}
       - ZBX_METADATA=${ZBX_METADATA}
+    ports:
+      - 10050:10050
 
 networks:
   kong-net:
