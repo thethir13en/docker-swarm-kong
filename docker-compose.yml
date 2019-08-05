@@ -88,32 +88,32 @@ services:
     networks:
       - kong-net
 
-  # #Monitoring
-  # cadvisor:
-  #   image: google/cadvisor
-  #   hostname: '{{.Node.ID}}'
-  #   command: -logtostderr -docker_only
-  #   volumes:
-  #     - /:/rootfs:ro
-  #     - /var/run:/var/run:rw
-  #     - /sys:/sys:ro
-  #     - /var/lib/docker/:/var/lib/docker:ro
-  #   depends_on:
-  #     - influx
-  #   deploy:
-  #     mode: global
+  #Monitoring
+  cadvisor:
+    image: google/cadvisor
+    hostname: '{{.Node.ID}}'
+    command: -logtostderr -docker_only
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    depends_on:
+      - influx
+    deploy:
+      mode: global
 
-  # zabbix:
-  #   image: zabbix/zabbix-agent
-  #   restart: unless-stopped
-  #   deploy:
-  #     mode: global
-  #   privileged: true
-  #   environment:
-  #     - ZBX_SERVER_HOST=${ZBX_SERVER_HOSTNAME}
-  #     - ZBX_PASSIVESERVERS=${ZBX_SERVER_HOSTNAME}
-  #     - ZBX_ACTIVESERVERS=${ZBX_SERVER_HOSTNAME}
-  #     - ZBX_METADATAITEM=${ZBX_METADATA}
+  zabbix:
+    image: zabbix/zabbix-agent
+    hostname: '{{.Node.ID}}'
+    restart: unless-stopped
+    deploy:
+      mode: global
+    privileged: true
+    environment:
+      - ZBX_SERVER_HOST=${ZBX_SERVER_HOST}
+      - ZBX_METADATAITEM=${ZBX_METADATA}
+      - ZBX_HOSTNAME=${ZBX_HOSTNAME}
 
 networks:
   kong-net:

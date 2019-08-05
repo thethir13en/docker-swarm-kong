@@ -4,10 +4,15 @@ stages:
 deploy configuration:
   stage: deploy
   script:
+    # DB variables
     - export POSTGRES_USER=kong
     - export POSTGRES_DB=kong-db
     - export POSTGRES_USER_PASSWD=${POSTGRES_USER_PASSWD}
+    # KONG Token Secret
     - export KONG_TOKEN_SECRET=${KONG_SECRET}
+    # Zabbix
+    - export ZBX_SERVER_HOST=${ZBX_SERVER_HOST}
+    - export ZBX_METADATA=${ZBX_METADATA}
     - docker stack deploy -c docker-compose.yml kong-api
   only:
     - master
