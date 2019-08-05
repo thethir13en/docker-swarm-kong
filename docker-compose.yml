@@ -112,7 +112,7 @@ services:
     privileged: true
     environment:
       - ZBX_SERVER_HOST=${ZBX_SERVER_HOST}
-      - ZBX_METADATAITEM=${ZBX_METADATA}
+      - ZBX_METADATA=${ZBX_METADATA}
 
 networks:
   kong-net:
