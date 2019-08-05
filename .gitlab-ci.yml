@@ -1,0 +1,15 @@
+stages:
+  - deploy
+
+deploy configuration:
+  stage: deploy
+  script:
+    - export POSTGRES_USER=kong
+    - export POSTGRES_DB=kong-db
+    - export POSTGRES_USER_PASSWD=${POSTGRES_USER_PASSWD}
+    - export KONG_TOKEN_SECRET=${KONG_SECRET}
+    - docker stack deploy -c docker-compose.yml
+  only:
+    - master
+  tags:
+    - kong-gw
