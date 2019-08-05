@@ -102,7 +102,6 @@ services:
   cadvisor:
     image: google/cadvisor
     hostname: '{{.Node.Hostname}}'
-    command: -logtostderr -docker_only
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:rw
