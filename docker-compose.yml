@@ -6,6 +6,9 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     restart: unless-stopped
+    deploy:
+      restart_policy:
+        condition: on-failure
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_DB=${POSTGRES_DB}
@@ -23,6 +26,8 @@ services:
     restart: unless-stopped
     deploy:
       replicas: 10
+      restart_policy:
+        condition: on-failure
     environment:
       - KONG-DATABASE=postgres
       - KONG_PG_HOST=kong-database
@@ -66,6 +71,8 @@ services:
     restart: unless-stopped
     deploy:
       mode: global
+      restart_policy:
+        condition: on-failure
     environment:
       - NODE_ENV=production
       - TOKEN_SECRET=${KONG_TOKEN_SECRET}
@@ -85,6 +92,9 @@ services:
     volumes:
       - mongo_data:/data/db
     restart: unless-stopped
+    deploy:
+      restart_policy:
+        condition: on-failure
     networks:
       - kong-net
 
@@ -103,18 +113,20 @@ services:
     deploy:
       mode: global
 
-  zabbix:
-    image: zabbix/zabbix-agent
-    hostname: '{{.Node.Hostname}}'
-    restart: unless-stopped
-    deploy:
-      mode: global
-    privileged: true
-    environment:
-      - ZBX_SERVER_HOST=${ZBX_SERVER_HOST}
-      - ZBX_METADATA=${ZBX_METADATA}
-    ports:
-      - 10050:10050
+  # zabbix:
+  #   image: zabbix/zabbix-agent
+  #   hostname: '{{.Node.Hostname}}'
+  #   restart: unless-stopped
+  #   deploy:
+  #     mode: global
+  #     restart_policy:
+  #       condition: on-failure
+  #   privileged: true
+  #   environment:
+  #     - ZBX_SERVER_HOST=${ZBX_SERVER_HOST}
+  #     - ZBX_METADATA=${ZBX_METADATA}
+  #   ports:
+  #     - 10050:10050
 
 networks:
   kong-net:
