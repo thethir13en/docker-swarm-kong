@@ -113,7 +113,6 @@ services:
     environment:
       - ZBX_SERVER_HOST=${ZBX_SERVER_HOST}
       - ZBX_METADATAITEM=${ZBX_METADATA}
-      - ZBX_HOSTNAME=${ZBX_HOSTNAME}
 
 networks:
   kong-net:
