@@ -8,7 +8,7 @@ deploy configuration:
     - export POSTGRES_DB=kong-db
     - export POSTGRES_USER_PASSWD=${POSTGRES_USER_PASSWD}
     - export KONG_TOKEN_SECRET=${KONG_SECRET}
-    - docker stack deploy -c docker-compose.yml
+    - docker stack deploy -c docker-compose.yml kong-api
   only:
     - master
   tags:
