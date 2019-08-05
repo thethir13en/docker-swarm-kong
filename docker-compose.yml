@@ -105,7 +105,7 @@ services:
 
   zabbix:
     image: zabbix/zabbix-agent
-    hostname: '{{.Node.ID}}'
+    hostname: '{{.Node.HOSTNAME}}'
     restart: unless-stopped
     deploy:
       mode: global
