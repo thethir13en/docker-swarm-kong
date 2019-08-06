@@ -33,7 +33,7 @@ deploy stack production:
     - docker stack deploy -c docker-compose.yml kong-api
   environment:
     name: production
-    url: https://kong.apifonica.com
+    url: ${URL}
   only:
     - master
   tags:
