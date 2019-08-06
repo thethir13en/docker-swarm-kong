@@ -58,7 +58,23 @@ docker stack deploy -c docker-compose-stdout.yml ${НАЗВАНИЕ_ВАШЕГО
 ```
 docker-compose -f docker-compose-stdout.yml up -d
 ```
+# Использование
+
+* По-умолчанию **Konga Dashboard** запускается на порту http://localhost:1337
 
 # To-do
 
-* Улучшеное параметризирование (Количество реплик и тд.)
+* Улучшеное параметризирование
+* Резервное копирование ```volumes``` с конфигурациями
+
+# Ссылки
+
+* [Документация Docker](https://docs.docker.com/)
+
+* [Документация Docker Swarm](https://docs.docker.com/engine/swarm/)
+
+* [Установка docker-compose](https://docs.docker.com/compose/install/)
+
+* [Документация Kong](https://docs.konghq.com/)
+
+* [GitHub Konga Dashboard](https://github.com/pantsel/konga)
