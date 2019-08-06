@@ -1,4 +1,4 @@
-# **Docker Swarm and docker-compose Configuration for Kong API Gateway**
+# **Docker Swarm and docker-compose configuration for Kong API Gateway**
 Данная конфигурация позволяет быстро развернуть **Kong API Gateway** и **Konga Dashboard**, при помощи оркестраторов **Docker Swarm** и **docker-compose**.
 
 # Характеристики
