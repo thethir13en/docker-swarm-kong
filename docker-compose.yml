@@ -86,7 +86,7 @@ services:
       restart_policy:
         condition: on-failure
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=${ENVIRONMENT}
       - TOKEN_SECRET=${KONG_TOKEN_SECRET}
       - DB_ADAPTER=mongo
       - DB_HOST=konga-mongodb

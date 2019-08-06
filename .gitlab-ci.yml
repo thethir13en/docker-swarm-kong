@@ -12,6 +12,7 @@ before_script:
     # Graylog Opts
     - export GRAYLOG_ADDR=${GRAYLOG_ADDR}
     - export GRAYLOG_PORT=${GRAYLOG_PORT}
+    - export ENVIRONMENT=${CI_ENVIRONMENT_NAME}
 
 validate configuration:
   stage: validate
