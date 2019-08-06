@@ -82,7 +82,8 @@ services:
       - konga-mongodb
     restart: unless-stopped
     deploy:
-      mode: global
+      # mode: global
+      replicas: 1
       restart_policy:
         condition: on-failure
     environment:
