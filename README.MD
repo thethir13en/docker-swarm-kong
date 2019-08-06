@@ -27,7 +27,7 @@
 # Запуск
 На мастер-ноде, в кластере **Docker Swarm** выполните команду:
 ```
-docker stack deploy -c docker-compose.yml ${НАЗВАНИЕ_ВАЩЕГО_СТЕКА}
+docker stack deploy -c docker-compose.yml ${НАЗВАНИЕ_ВАШЕГО_СТЕКА}
 ```
 
 # To-do
