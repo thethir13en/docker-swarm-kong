@@ -13,6 +13,10 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER_PASSWD=${POSTGRES_USER_PASSWD}
+    logging:
+      driver: gelf
+      options:
+        gelf-address: "udp://${GRAYLOG_ADDR}:${GRAYLOG_PORT}"
     ports:
       - 5432:5432
     networks:
@@ -43,7 +47,7 @@ services:
     logging:
       driver: gelf
       options:
-        gelf-address: "udp://gray.apifonica.com:15000"
+        gelf-address: "udp://${GRAYLOG_ADDR}:${GRAYLOG_PORT}"
     ports:
       - 8000:8000
       - 8443:8443
@@ -63,6 +67,10 @@ services:
       - KONG_PG_DATABASE=${POSTGRES_DB}
       - KONG_PG_USER=${POSTGRES_USER}
     command: ash -c "sleep 30 && kong migrations bootstrap"
+    logging:
+      driver: gelf
+      options:
+        gelf-address: "udp://${GRAYLOG_ADDR}:${GRAYLOG_PORT}"
     networks:
       - kong-net
 
@@ -86,6 +94,10 @@ services:
       - DB_USER=kong
       # - DB_PASSWORD=kong
       # - DB_DATABASE=kong
+    logging:
+      driver: gelf
+      options:
+        gelf-address: "udp://${GRAYLOG_ADDR}:${GRAYLOG_PORT}"
     ports:
       - 1337:1337
     networks:
@@ -115,6 +127,10 @@ services:
       mode: global
       restart_policy:
         condition: on-failure
+    logging:
+      driver: gelf
+      options:
+        gelf-address: "udp://${GRAYLOG_ADDR}:${GRAYLOG_PORT}"
     ports:
       - 8080:8080
 
