@@ -17,6 +17,8 @@ before_script:
 validate configuration:
   stage: validate
   script:
+    # Validate stdout configuration
+    - docker-compose -f docker-compose-stdout.yml config -q
     # Validate configuration
     - docker-compose config -q
   tags:
