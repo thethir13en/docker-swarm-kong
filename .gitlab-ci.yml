@@ -8,7 +8,7 @@ before_script:
     - export POSTGRES_DB=kong-db
     - export POSTGRES_USER_PASSWD=${POSTGRES_USER_PASSWD}
     # KONG Token Secret
-    - export KONG_TOKEN_SECRET=${KONG_SECRET}
+    - export KONGA_TOKEN_SECRET=${KONGA_SECRET}
     # Graylog Opts
     - export GRAYLOG_ADDR=${GRAYLOG_ADDR}
     - export GRAYLOG_PORT=${GRAYLOG_PORT}
