@@ -134,21 +134,6 @@ services:
     ports:
       - 8080:8080
 
-  # zabbix:
-  #   image: zabbix/zabbix-agent
-  #   hostname: '{{.Node.Hostname}}'
-  #   restart: unless-stopped
-  #   deploy:
-  #     mode: global
-  #     restart_policy:
-  #       condition: on-failure
-  #   privileged: true
-  #   environment:
-  #     - ZBX_SERVER_HOST=${ZBX_SERVER_HOST}
-  #     - ZBX_METADATA=${ZBX_METADATA}
-  #   ports:
-  #     - 10050:10050
-
 networks:
   kong-net:
 
