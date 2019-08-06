@@ -61,6 +61,8 @@ docker-compose -f docker-compose-stdout.yml up -d
 # Usage
 
 * By default **Konga Dashboard** runs on http://localhost:1337
+* By default **Konga Dashboard** runs on manager node
+* By default **MongoDB** runs on manager node
 
 # To-do
 
