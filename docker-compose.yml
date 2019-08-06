@@ -40,6 +40,10 @@ services:
       - KONG_ADMIN_ERROR_LOG=/dev/stderr
       - KONG_ADMIN_LISTEN=0.0.0.0:8001
       - KONG_ADMIN_LISTEN_SSL=0.0.0.0:8444
+    logging:
+      driver: gelf
+      options:
+        gelf-address: "udp://gray.apifonica.com:15000"
     ports:
       - 8000:8000
       - 8443:8443
