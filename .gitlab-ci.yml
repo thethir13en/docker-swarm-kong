@@ -1,9 +1,8 @@
 stages:
+  - validate
   - deploy
 
-deploy configuration:
-  stage: deploy
-  script:
+before_script:
     # DB variables
     - export POSTGRES_USER=kong
     - export POSTGRES_DB=kong-db
@@ -13,8 +12,23 @@ deploy configuration:
     # Graylog Opts
     - export GRAYLOG_ADDR=${GRAYLOG_ADDR}
     - export GRAYLOG_PORT=${GRAYLOG_PORT}
+
+validate configuration:
+  stage: validate
+  script:
+    # Validate configuration
+    - docker-compose config -q
+  tags:
+    - kong-gw
+
+deploy stack production:
+  stage: deploy
+  script:
     # Launch stack
     - docker stack deploy -c docker-compose.yml kong-api
+  environment:
+    name: production
+    url: https://kong.apifonica.com
   only:
     - master
   tags:
