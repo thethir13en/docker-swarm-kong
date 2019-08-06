@@ -60,7 +60,7 @@ docker-compose -f docker-compose-stdout.yml up -d
 ```
 # Использование
 
-* По-умолчанию **Konga Dashboard** запускается на порту http://localhost:1337
+* По-умолчанию **Konga Dashboard** запускается на http://localhost:1337
 
 # To-do
 
