@@ -83,6 +83,9 @@ services:
     restart: unless-stopped
     deploy:
       replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
       restart_policy:
         condition: on-failure
     environment:
@@ -109,6 +112,9 @@ services:
       - mongo_data:/data/db
     restart: unless-stopped
     deploy:
+      placement:
+        constraints:
+          - node.role == manager
       restart_policy:
         condition: on-failure
     networks:
