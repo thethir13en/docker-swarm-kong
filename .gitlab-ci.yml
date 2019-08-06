@@ -3,11 +3,13 @@ stages:
   - deploy
 
 before_script:
+    # KONG service replicas
+    - export KONG_REPLICAS=${KONG_REPLICAS}
     # DB variables
     - export POSTGRES_USER=kong
     - export POSTGRES_DB=kong-db
     - export POSTGRES_USER_PASSWD=${POSTGRES_USER_PASSWD}
-    # KONG Token Secret
+    # KONGA Token Secret
     - export KONGA_TOKEN_SECRET=${KONGA_SECRET}
     # Graylog Opts
     - export GRAYLOG_ADDR=${GRAYLOG_ADDR}

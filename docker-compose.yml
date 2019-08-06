@@ -29,7 +29,7 @@ services:
       - kong-database
     restart: unless-stopped
     deploy:
-      replicas: 10
+      replicas: ${KONG_REPLICAS}
       restart_policy:
         condition: on-failure
     environment:
